@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="UTF-8">
     <title>Pizzeria website</title>
@@ -159,14 +158,117 @@
                 font-size: 6vw;
             }
         }
+
+        
+
+        * {
+        box-sizing: border-box;
+      }
+      .openBtn {
+        display: flex;
+        justify-content: left;
+      }
+      .openButton {
+        border: none;
+        border-radius: 5px;
+        background-color: #1c87c9;
+        color: white;
+        padding: 14px 20px;
+        cursor: pointer;
+        position: fixed;
+      }
+      .loginPopup {
+        position: relative;
+        text-align: center;
+        width: 100%;
+      }
+      .formPopup {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 5%;
+        transform: translate(-50%, 5%);
+        z-index: 9;
+      }
+      .formContainer {
+        width: 60vw;
+        border-radius: 1vw;
+        padding: 20px;
+        background-color: #fff;
+      }
+      .formContainer input[type=street],
+      .formContainer input[type=phone] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 20px 0;
+        border: none;
+        background: #eee;
+      }
+      .formContainer input[type=street]:focus,
+      .formContainer input[type=phone]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+      .formContainer .btn {
+        padding: 12px;
+        border: none;
+        border-radius: 1vw;
+        background-color: #8ebf42;
+        color: #fff;
+        cursor: pointer;
+        width: 10vw;
+        margin-right: 1vw;
+        margin-bottom: 15px;
+        opacity: 0.8;
+      }
+      .btn:hover {
+            transform: scale(1.05);
+        }
+      .formContainer .cancel {
+        width: 10vw;
+        background-color: #cc0000;
+      }
+      .cancel:hover {
+            transform: scale(1.05);
+        }
+
+      
     </style>
 </head>
 
 <body>
+    <div class="loginPopup">
+      <div class="formPopup" id="popupForm">
+        <form action="index.html" class="formContainer">
+          <h1>Order</h1>
+          <label for="street">
+            <strong>Shipping adress</strong>
+          </label>
+          <input type="street" id="street" placeholder="Pizza town, 123 Pizza Street, 321 house" name="street" required>
+          <label for="phone">
+            <strong>Phone number</strong>
+          </label>
+          <input type="phone" id="phone" placeholder="+380367522060" name="phone" required>
+
+          <button type="submit" class="btn">Order</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+      }
+      function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+      }
+    </script>
+
+
     <header>
         <div class="header-text">
             Bruh Pizza</br>
-            <button class="order-button"><span>Order</span> <span>now</span></button>
+            <button class="order-button", onclick="openForm()"><span>Order</span> <span>now</span></button>
         </div>
 
     </header>
@@ -216,8 +318,5 @@
             </div>
         </div>
     </footer>
-
-    
 </body>
-
 </html>
