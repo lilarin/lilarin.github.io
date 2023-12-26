@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="UTF-8">
-	<title>Pizza</title>
+    <title>Pizza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
+            margin: none;
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
+            font-family: 'AguafinaScript', cursive;
         }
 
         header {
@@ -16,9 +19,10 @@
             background-repeat: no-repeat;
             background-size: cover;
             height: 100vh;
-            margin: 0;
             padding: 0;
             position: relative;
+            text-align: center;
+            color: #fff;
         }
 
         @font-face {
@@ -29,12 +33,9 @@
         }
 
         .header-text {
-            font-size: 25vh;
-            font-family: "AguafinaScript";
-            color: #fff;
-            text-align: center;
+            font-size: 12vw;
             position: absolute;
-            top: 35%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
@@ -42,46 +43,15 @@
         main {
             background-color: #ffffff;
             min-height: 100vh;
-        }
-
-        .main-text span {
-            padding-top: 4vh;
-            font-size: 10vh;
-            font-family: "AguafinaScript";
-            display: inline-block;
-            top: 135%;
-            left: 70%;
-        }
-
-        .main-text span:nth-child(1) {
-            padding-left: 4vh;
-            color: #ED302E;
-        }
-
-        .main-text span:nth-child(2) {
-            padding-left: 2vh;
-            color: #236643;
-        }
-
-        .main-text span:nth-child(3) {
-            padding-left: 78vh;
-            font-size: 8vh;
-            color: black;
-        }
-
-        footer {
-            background-color: #236643;
-            color: #fff;
-            height: 10vh;
+            padding: 20px;
         }
 
         .order-button {
-            font-size: 8vh;
-            font-family: "AguafinaScript";
-            position: absolute;
-            top: 65%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            font-size: 5vw;
+            font-family: 'AguafinaScript';
+            src: url('fonts/AguafinaScript-Regular.ttf') format('truetype');
+            position: relative;
+            margin: 20px auto;
             background-color: white;
             border: none;
             border-radius: 100px;
@@ -91,14 +61,14 @@
         }
 
         .order-button span {
-            font-size: 7vh;
+            font-size: 4vw;
             transition: font-size 0.3s;
             display: inline-block;
-            padding: 0.5vh;
+            padding: 0.5vw;
         }
 
         .order-button:hover {
-            transform: translate(-50%, -50%) scale(1.1);
+            transform: scale(1.1);
         }
 
         .order-button span:first-child {
@@ -111,25 +81,32 @@
 
         .image-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2vw;
             text-align: center;
         }
 
-        .image-grid img {
-            max-width: 50%;
-            border-radius: 100px;
-            padding-bottom: 20px;
+        @media screen and (min-width: 600px) {
+            .image-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
         }
 
-        .image-top-caption {
-            font-family: "AguafinaScript";
-            font-size: 6vh;
+        .image-grid img {
+            width: 100%;
+            border-radius: 2vw;
+            margin-bottom: 2vw;
+        }
+
+        .image-top-caption
+        {
+            font-size: 5vw;
             text-align: center;
         }
 
         .image-caption {
-            font-family: "AguafinaScript";
-            font-size: 3vh;
+            font-size: 2vw;
+            text-align: center;
         }
 
         .image-top-caption span:nth-child(1) {
@@ -140,64 +117,86 @@
             color: #236643;
         }
 
+        footer {
+            background-color: #236643;
+            color: #fff;
+            padding: 20px;
+        }
+
         .footer-content {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            justify-content: space-around;
             align-items: center;
-            padding: 0 20px;
-            height: 100%;
         }
 
-        .footer-address {
-            flex: 1;
-            text-align: left;
-        }
-
-        .footer-hours {
-            flex: 1;
+        .footer-address,
+        .footer-hours,
+        .footer-phone {
+            flex-basis: calc(33.33% - 20px);
             text-align: center;
         }
 
-        .footer-phone {
-            flex: 1;
-            text-align: right;
+
+        @media screen and (max-width: 555px) {
+            .header-text {
+                font-size: 21vw;
+            }
+
+            .order-button {
+                font-size: 6vw;
+            }
+
+            .order-button span {
+                font-size: 8vw;
+            }
+
+            .image-top-caption {
+                font-size: 12vw;
+            }
+
+            .image-caption {
+                font-size: 6vw;
+            }
         }
     </style>
 </head>
 
 <body>
     <header>
-        <div class="header-text">Bruh Pizza</div>
-        <button class="order-button"><span>Order</span> <span>now</span></button>
+        <div class="header-text">
+            Bruh Pizza</br>
+            <button class="order-button"><span>Order</span> <span>now</span></button>
+        </div>
+
     </header>
 
     <main>
-        <div class="main-text"><span>Bruh</span> <span>Pizza</span> <span>+38 063-636-36-36</span></div>
         <div class="image-grid">
             <div>
                 <p class="image-top-caption"><span>Pizza</span> <span>carbonara</span></p>
-                <img src="images/pizza1.png" alt="">
+                <img src="images/pizza4.png" alt="">
                 <p class="image-caption"><span>Medium (30 sm):</span> <span>2$</span></p>
                 <p class="image-caption"><span>Large (45 sm):</span> <span>5$</span></p>
             </div>
             <div>
                 <p class="image-top-caption"><span>Pizza</span> <span>paperoni</span></p>
-                <img src="images/pizza2.png" alt="">
+                <img src="images/pizza3.png" alt="">
                 <p class="image-caption"><span>Medium (30 sm):</span> <span>2$</span></p>
                 <p class="image-caption"><span>Large (45 sm):</span> <span>5$</span></p>
             </div>
             <div>
                 <p class="image-top-caption"><span>Pizza</span> <span>4-cheese</span></p>
-                <img src="images/pizza3.png" alt="">
+                <img src="images/pizza2.png" alt="">
                 <p class="image-caption"><span>Medium (30 sm):</span> <span>3$</span></p>
                 <p class="image-caption"><span>Large (45 sm):</span> <span>6$</span></p>
             </div>
             <div>
                 <p class="image-top-caption"><span>Pizza</span> <span>with seafood</span></p>
-                <img src="images/pizza4.png" alt="">
+                <img src="images/pizza1.png" alt="">
                 <p class="image-caption"><span>Medium (30 sm):</span> <span>4$</span></p>
                 <p class="image-caption"><span>Large (45 sm):</span> <span>8$</span></p>
-            </div>
+            </div>  
         </div>
     </main>
 
@@ -214,7 +213,6 @@
             </div>
         </div>
     </footer>
-	
-
 </body>
+
 </html>
